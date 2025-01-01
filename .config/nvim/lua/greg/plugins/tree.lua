@@ -9,7 +9,7 @@ return {
       -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
     keys = {
-        { '<leader>e', '<cmd>Neotree source=filesystem reveal=true position=float<cr>' }
+        { '<leader>e', ':Neotree source=filesystem reveal=true position=float<cr>' }
     }
 }
 }
