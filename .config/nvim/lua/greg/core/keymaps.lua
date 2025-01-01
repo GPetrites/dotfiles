@@ -37,10 +37,10 @@ keymap.set('n', 'x', '"_x', opts)
 --keymap.set('n', 'N', 'Nzzzv')
 
 -- Resize with arrows
---keymap.set('n', '<Up>', ':resize -2<CR>', opts)
---keymap.set('n', '<Down>', ':resize +2<CR>', opts)
---keymap.set('n', '<Left>', ':vertical resize -2<CR>', opts)
---keymap.set('n', '<Right>', ':vertical resize +2<CR>', opts)
+keymap.set('n', '<leader>s<Up>', ':resize -2<CR>', opts)
+keymap.set('n', '<leader>s<Down>', ':resize +2<CR>', opts)
+keymap.set('n', '<leader>s<Left>', ':vertical resize -2<CR>', opts)
+keymap.set('n', '<leader>s<Right>', ':vertical resize +2<CR>', opts)
 
 -- Buffers
 keymap.set('n', '<Tab>', ':bnext<CR>', opts)
@@ -53,10 +53,10 @@ keymap.set('n', '<leader>+', '<C-a>', opts) -- increment
 keymap.set('n', '<leader>-', '<C-x>', opts) -- decrement
 
 -- Window management
---keymap.set('n', '<leader>v', '<C-w>v', opts)      -- split window vertically
---keymap.set('n', '<leader>h', '<C-w>s', opts)      -- split window horizontally
---keymap.set('n', '<leader>se', '<C-w>=', opts)     -- make split windows equal width & height
---keymap.set('n', '<leader>xs', ':close<CR>', opts) -- close current split window
+keymap.set('n', '<leader>sv', '<C-w>v', opts)      -- split window vertically
+keymap.set('n', '<leader>sh', '<C-w>s', opts)      -- split window horizontally
+keymap.set('n', '<leader>se', '<C-w>=', opts)     -- make split windows equal width & height
+keymap.set('n', '<leader>sq', ':close<CR>', opts) -- close current split window
 
 -- Navigate between splits
 keymap.set('n', '<C-left>', ':wincmd k<CR>', opts)
