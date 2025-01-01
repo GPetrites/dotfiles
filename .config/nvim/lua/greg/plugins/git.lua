@@ -17,9 +17,6 @@ return {
             changedelete = { text = '~' },
         }
     },
---    config = function()
-  --      require("gitsigns").setup({})
-    --end
     },
  {
   'kdheepak/lazygit.nvim',
