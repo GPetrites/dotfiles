@@ -8,7 +8,7 @@ return {
             ensure_installed = {
                 "lua_ls",
                "pyright",
-                "ruff"
+                -- "ruff"
             },
         },
     },
