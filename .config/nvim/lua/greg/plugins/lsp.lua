@@ -7,6 +7,7 @@ return {
         config = {
             ensure_installed = {
                 "lua_ls",
+                "pyright"
             },
         },
     },

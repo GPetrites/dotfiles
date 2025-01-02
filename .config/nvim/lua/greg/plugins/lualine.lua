@@ -1,7 +1,6 @@
 return {
     "nvim-lualine/lualine.nvim",
     dependencies = {
-
         "folke/noice.nvim",
     },
     opts = {
