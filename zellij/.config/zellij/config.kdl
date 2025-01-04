@@ -55,21 +55,25 @@ keybinds clear-defaults=true {
         bind "tab" { ToggleTab; }
     }
     resize {
-        bind "left" { Resize "Increase left"; }
-        bind "down" { Resize "Increase down"; }
-        bind "up" { Resize "Increase up"; }
-        bind "right" { Resize "Increase right"; }
+        bind "left" { Resize "Decrease left"; }
+        bind "down" { Resize "Decrease down"; }
+        bind "up" { Resize "Decrease up"; }
+        bind "right" { Resize "Decrease right"; }
+        bind "end" { Resize "Increase"; }
+        bind "home" { Resize "Decrease"; }
+        bind "l" { Resize "Increase"; }
+        bind "y" { Resize "Decrease"; }
         bind "+" { Resize "Increase"; }
         bind "-" { Resize "Decrease"; }
         bind "=" { Resize "Increase"; }
-        bind "H" { Resize "Decrease left"; }
-        bind "J" { Resize "Decrease down"; }
-        bind "K" { Resize "Decrease up"; }
-        bind "L" { Resize "Decrease right"; }
-        bind "h" { Resize "Increase left"; }
-        bind "j" { Resize "Increase down"; }
-        bind "k" { Resize "Increase up"; }
-        bind "l" { Resize "Increase right"; }
+        bind "n" { Resize "Increase left"; }
+        bind "e" { Resize "Increase down"; }
+        bind "u" { Resize "Increase up"; }
+        bind "i" { Resize "Increase right"; }
+        //bind "h" { Resize "Increase left"; }
+        //bind "j" { Resize "Increase down"; }
+        //bind "k" { Resize "Increase up"; }
+        //bind "l" { Resize "Increase right"; }
         bind "Ctrl n" { SwitchToMode "normal"; }
     }
     move {
