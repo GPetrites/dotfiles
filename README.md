@@ -32,3 +32,20 @@ then use GNU stow to create symlinks
 ```
 $ stow -v */
 ```
+
+## Installed packages
+
+zellij
+fzf
+kitty
+yay
+uv
+stow
+ruff
+npm
+nushell
+neovim
+lazygit
+git
+fish
+nodejs
