@@ -3,8 +3,14 @@
 //
 
 keybinds clear-defaults=true {
+    normal {
+        bind "Enter" {
+            WriteChars "\u{000D}";
+            MessagePlugin "autolock" {};
+        }
+    }
     locked {
-        bind "Ctrl g" { 
+        bind "Alt z" { 
             MessagePlugin "autolock" {payload "disable";};
             SwitchToMode "normal"; 
         }
@@ -138,6 +144,11 @@ keybinds clear-defaults=true {
             SwitchToMode "normal"
         }
     }
+    shared {
+        bind "Alt Shift z" {
+            MessagePlugin "autolock" {payload "enable";};
+        }
+    }
     shared_except "locked" {
         bind "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
@@ -145,7 +156,7 @@ keybinds clear-defaults=true {
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
         bind "Alt f" { ToggleFloatingPanes; }
-        bind "Ctrl g" { 
+        bind "Alt shift z" {
             MessagePlugin "autolock" {paylod "enable";};
             SwitchToMode "locked";
         }

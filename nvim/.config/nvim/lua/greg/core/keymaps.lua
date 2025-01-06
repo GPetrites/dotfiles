@@ -59,10 +59,17 @@ keymap.set("n", "<leader>se", "<C-w>=", opts)     -- make split windows equal wi
 keymap.set("n", "<leader>sq", ":close<CR>", opts) -- close current split window
 
 -- Navigate between splits
-keymap.set("n", "<C-left>", ":wincmd k<CR>", opts)
-keymap.set("n", "<C-down>", ":wincmd j<CR>", opts)
-keymap.set("n", "<C-up>", ":wincmd h<CR>", opts)
-keymap.set("n", "<C-right>", ":wincmd l<CR>", opts)
+if os.getenv('ZELLIJ_SESSION_NAME') == nil then
+    keymap.set("n", "<a-left>", ":wincmd h<CR>", opts)
+    keymap.set("n", "<a-down>", ":wincmd j<CR>", opts)
+    keymap.set("n", "<a-up>", ":wincmd k<CR>", opts)
+    keymap.set("n", "<a-right>", ":wincmd l<CR>", opts)
+else
+    keymap.set("n", "<a-left>", ":ZellijNavigateLeft<CR>", opts)
+    keymap.set("n", "<a-down>", ":ZellijNavigateDown<CR>", opts)
+    keymap.set("n", "<a-up>", ":ZellijNavigateUp<CR>", opts)
+    keymap.set("n", "<a-right>", ":ZellijNavigateRight<CR>", opts)
+end
 
 -- Tabs
 --keymap.set('n', '<leader>to', ':tabnew<CR>', opts)   -- open new tab
