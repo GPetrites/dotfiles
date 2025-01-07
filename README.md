@@ -49,3 +49,4 @@ lazygit
 git
 fish
 nodejs
+starship
