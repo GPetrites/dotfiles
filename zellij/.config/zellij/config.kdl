@@ -8,6 +8,8 @@ keybinds clear-defaults=true {
             WriteChars "\u{000D}";
             MessagePlugin "autolock" {};
         }
+        bind "Ctrl Shift down" { ScrollDown; }
+        bind "Ctrl Shift up" { ScrollUp; }
     }
     locked {
         bind "Alt z" { 
