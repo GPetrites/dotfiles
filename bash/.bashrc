@@ -15,3 +15,5 @@ PS1='[\u@\h \W]\$ '
 #if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
 #	source "$XDG_RUNTIME_DIR/ssh-agent.env" > /dev/null
 #fi
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
