@@ -1,3 +1,2 @@
-require "greg.core.options"
-require "greg.core.keymaps"
-require "greg.lazy"
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
