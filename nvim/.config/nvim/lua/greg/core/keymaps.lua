@@ -53,22 +53,22 @@ keymap.set("n", "<leader>+", "<C-a>", opts) -- increment
 keymap.set("n", "<leader>-", "<C-x>", opts) -- decrement
 
 -- Window management
-keymap.set("n", "<leader>sv", "<C-w>v", opts)     -- split window vertically
-keymap.set("n", "<leader>sh", "<C-w>s", opts)     -- split window horizontally
-keymap.set("n", "<leader>se", "<C-w>=", opts)     -- make split windows equal width & height
+keymap.set("n", "<leader>sv", "<C-w>v", opts) -- split window vertically
+keymap.set("n", "<leader>sh", "<C-w>s", opts) -- split window horizontally
+keymap.set("n", "<leader>se", "<C-w>=", opts) -- make split windows equal width & height
 keymap.set("n", "<leader>sq", ":close<CR>", opts) -- close current split window
 
 -- Navigate between splits
-if os.getenv('ZELLIJ_SESSION_NAME') == nil then
-    keymap.set("n", "<a-left>", ":wincmd h<CR>", opts)
-    keymap.set("n", "<a-down>", ":wincmd j<CR>", opts)
-    keymap.set("n", "<a-up>", ":wincmd k<CR>", opts)
-    keymap.set("n", "<a-right>", ":wincmd l<CR>", opts)
+if os.getenv("ZELLIJ_SESSION_NAME") == nil then
+  keymap.set("n", "<a-left>", ":wincmd h<CR>", opts)
+  keymap.set("n", "<a-down>", ":wincmd j<CR>", opts)
+  keymap.set("n", "<a-up>", ":wincmd k<CR>", opts)
+  keymap.set("n", "<a-right>", ":wincmd l<CR>", opts)
 else
-    keymap.set("n", "<a-left>", ":ZellijNavigateLeft<CR>", opts)
-    keymap.set("n", "<a-down>", ":ZellijNavigateDown<CR>", opts)
-    keymap.set("n", "<a-up>", ":ZellijNavigateUp<CR>", opts)
-    keymap.set("n", "<a-right>", ":ZellijNavigateRight<CR>", opts)
+  keymap.set("n", "<a-left>", ":ZellijNavigateLeft<CR>", opts)
+  keymap.set("n", "<a-down>", ":ZellijNavigateDown<CR>", opts)
+  keymap.set("n", "<a-up>", ":ZellijNavigateUp<CR>", opts)
+  keymap.set("n", "<a-right>", ":ZellijNavigateRight<CR>", opts)
 end
 
 -- Tabs
