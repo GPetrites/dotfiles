@@ -1,0 +1,5 @@
+[manager]
+prepend_keymap = [
+	{ on = "<S-Up>", run = "seek -2", desc = "Seek up 2 units in the preview" },
+	{ on = "<S-Down>", run = "seek 2",  desc = "Seek down 2 units in the preview" },
+]
