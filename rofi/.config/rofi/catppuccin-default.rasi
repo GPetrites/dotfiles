@@ -1,0 +1,92 @@
+@import "catppuccin-mocha"
+
+* {
+    background:                  @base;
+    foreground:                  @text;
+    active-background:           @background;
+    active-foreground:           @blue;
+    normal-background:           @background;
+    normal-foreground:           @foreground;
+    urgent-background:           @background;
+    urgent-foreground:           @red;
+    selected-active-background:  @blue;
+    selected-active-foreground:  @background;
+    selected-normal-background:  @lightfg;
+    selected-normal-foreground:  @lightbg;
+    selected-urgent-background:  @red;
+    selected-urgent-foreground:  @background;
+    alternate-active-background: @lightbg;
+    alternate-active-foreground: @blue;
+    alternate-normal-background: @lightbg;
+    alternate-normal-foreground: @foreground;
+    alternate-urgent-background: @lightbg;
+    alternate-urgent-foreground: @red;
+    lightfg:                     @text;
+    separatorcolor:              @foreground;
+    lightbg:                     @mantle;
+    background-color:            transparent;
+    border-color:                @foreground;
+
+    spacing:                     2;
+    text-color: @text;
+    background-color:   transparent;
+}
+
+window {
+    padding:          5px;
+    border:           1px;
+    border-radius:    5px;
+    border-color:     @green;
+    background-color: @base;
+}
+
+mainbox {
+    padding: 12px;
+    border:  0;
+}
+
+inputbar {
+    padding:    8px 16px;
+    spacing:    8px;
+    children:   [ prompt,entry ];
+    border: 0px 0px 1px 0px;
+    border-color: @green; 
+}
+
+prompt {
+}
+
+entry {
+    cursor:            text;
+    spacing:           0;
+    placeholder-color: @overlay0;
+    placeholder:       "Search";
+}
+
+listview {
+    padding:      2px 0px 0px ;
+    scrollbar:    true;
+    spacing:      2px ;
+    fixed-height: 0;
+    border:       0;
+    columns:      2;
+    background-color:   transparent;
+}
+
+scrollbar {
+    padding:      0;
+    handle-width: 2px;
+    border:       0;
+    handle-color: @green;
+}
+
+element {
+    padding:        8px 16px;
+    spacing:        8px;
+    border-radius:  4px;
+}
+
+element selected normal, element selected active {
+    background-color:   @surface1;
+}
+
