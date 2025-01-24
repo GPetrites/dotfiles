@@ -1,10 +1,11 @@
-@import "mocha.css"; 
+@import "macchiato.css"; 
 
 * {
-    font-family: "MesloLGS Nerd Font Mono Bold";
+    /* font-family: "MesloLGS Nerd Font Mono Bold"; */
+    font-family: "Nimbus Mono PS";
     font-size: 16px;
     min-height: 0;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 window#waybar {
