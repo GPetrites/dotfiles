@@ -1,8 +1,23 @@
 #!/bin/bash
 
-curl http://bing.com$(curl -s http://www.bing.com/HPImageArchive.aspx\?format\=js\&idx\=0\&n\=1 | jq -r '.images[0].url') >~/.config/hypr/desktop.jpg
+BACKGROUNDS="$HOME/.config/backgrounds"
 
-hyprctl hyprpaper preload "~/.config/hypr/desktop.jpg"
-hyprctl hyprpaper wallpaper ", ~/.config/hypr/desktop.jpg"
+if [ -d "$BACKGROUNDS" ]; then
+  echo "Directory exists."
+else
+  echo "Directory does not exist. Creating now..."
+  mkdir -p "$BACKGROUNDS"
+fi
 
-cp ~/.config/hypr/desktop.jpg /usr/share/sddm/themes/catppuccin-macchiato/backgrounds/wall.jpg
+# Download Bing image of the day
+curl http://bing.com$(curl -s http://www.bing.com/HPImageArchive.aspx\?format\=js\&idx\=0\&n\=1 | jq -r '.images[0].url') >$BACKGROUNDS/desktop.jpg
+
+# Load the image into hyprpaper
+hyprctl hyprpaper preload "$BACKGROUNDS/desktop.jpg"
+hyprctl hyprpaper wallpaper ", $BACKGROUNDS/desktop.jpg"
+
+# Convert the image to png for HyprLock
+magick $BACKGROUNDS/desktop.jpg $BACKGROUNDS/desktop.png
+
+# Copy image to SDDM theme
+cp $BACKGROUNDS/desktop.jpg /usr/share/sddm/themes/catppuccin-macchiato/backgrounds/wall.jpg
