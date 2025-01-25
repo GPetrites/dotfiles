@@ -1,0 +1,3 @@
+#! /bin/bash
+
+paru -Qei > ~/dotfiles/packages.txt
