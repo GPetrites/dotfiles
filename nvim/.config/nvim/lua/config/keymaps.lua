@@ -10,6 +10,9 @@ local opts = { noremap = true, silent = true }
 -- Buffers
 keymap.set("n", "<C-Tab>", ":bnext<CR>", opts)
 keymap.set("n", "<C-S-Tab>", ":bprevious<CR>", opts)
+keymap.set("n", "<C-q>", function()
+  Snacks.bufdelete()
+end, opts)
 
 -- Navigate between splits
 if os.getenv("ZELLIJ_SESSION_NAME") == nil then
