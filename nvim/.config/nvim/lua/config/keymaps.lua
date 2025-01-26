@@ -13,6 +13,9 @@ keymap.set("n", "<C-S-Tab>", ":bprevious<CR>", opts)
 keymap.set("n", "<C-q>", function()
   Snacks.bufdelete()
 end, opts)
+keymap.set("n", "<leader>bq", function()
+  Snacks.bufdelete()
+end, opts)
 
 -- Navigate between splits
 if os.getenv("ZELLIJ_SESSION_NAME") == nil then
