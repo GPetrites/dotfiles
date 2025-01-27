@@ -10,9 +10,11 @@ local opts = { noremap = true, silent = true }
 -- Buffers
 keymap.set("n", "<C-Tab>", ":bnext<CR>", opts)
 keymap.set("n", "<C-S-Tab>", ":bprevious<CR>", opts)
-keymap.set("n", "<C-q>", function()
-  Snacks.bufdelete()
-end, opts)
+
+keymap.del({ "i", "x", "n", "s" }, "<C-s>")
+
+keymap.set("n", "<leader>bs", "<cmd>w<cr><esc>", { desc = "Save File" })
+
 keymap.set("n", "<leader>bq", function()
   Snacks.bufdelete()
 end, opts)
