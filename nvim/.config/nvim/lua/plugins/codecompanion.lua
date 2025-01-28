@@ -111,26 +111,17 @@ return {
     opts = {
       --Refer to: https://github.com/olimorris/codecompanion.nvim/blob/main/lua/codecompanion/config.lua
       strategies = {
-        --NOTE: Change the adapter as required
         chat = {
           adapter = "copilot",
-          roles = { llm = "  Copilot Chat", user = "IT Man" },
+          roles = { llm = " Copilot" },
           slash_commands = {
-            ["buffer"] = {
-              callback = "helpers.slash_commands.buffer",
-              description = "Insert open buffers",
+            ["help"] = {
+              callback = "strategies.chat.slash_commands.help",
+              description = "Insert content from help tags",
               opts = {
-                contains_code = true,
-                provider = "fzf_lua", -- default|telescope|mini_pick|fzf_lua
-              },
-            },
-            ["file"] = {
-              callback = "helpers.slash_commands.file",
-              description = "Insert a file",
-              opts = {
-                contains_code = true,
-                max_lines = 1000,
-                provider = "fzf_lua", -- telescope|mini_pick|fzf_lua
+                contains_code = false,
+                max_lines = 128, -- Maximum amount of lines to of the help file to send (NOTE: Each vimdoc line is typically 10 tokens)
+                provider = "default", -- telescope|mini_pick|fzf_lua
               },
             },
           },
@@ -166,7 +157,7 @@ return {
       },
       display = {
         chat = {
-          intro_message = "Welcome to CodeCompanion ✨! Press ? for options",
+          intro_message = " Welcome to Copilot! Press ? for options",
           show_header_separator = false, -- Show header separators in the chat buffer? Set this to false if you're using an external markdown formatting plugin
           separator = "─", -- The separator between the different messages in the chat buffer
           show_references = true, -- Show references (from slash commands and variables) in the chat buffer?
@@ -179,22 +170,6 @@ return {
         log_level = "DEBUG",
       },
       prompt_library = {
-        ["Generate a Commit Message"] = {
-          prompts = {
-            {
-              role = "user",
-              content = function()
-                return "Write commit message with commitizen convention. Write clear, informative commit messages that explain the 'what' and 'why' behind changes, not just the 'how'."
-                  .. "\n\n```\n"
-                  .. vim.fn.system("git diff")
-                  .. "\n```"
-              end,
-              opts = {
-                contains_code = true,
-              },
-            },
-          },
-        },
         ["Explain"] = {
           strategy = "chat",
           description = "Explain how code in a buffer works",
@@ -232,13 +207,31 @@ return {
             },
           },
         },
+        ["Generate a Commit Message"] = {
+          prompts = {
+            {
+              role = "user",
+              content = function()
+                return "Write commit message with commitizen convention. Write clear, informative commit messages that explain the 'what' and 'why' behind changes, not just the 'how'."
+                  .. "\n\n```\n"
+                  .. vim.fn.system("git diff")
+                  .. "\n```"
+              end,
+              opts = {
+                contains_code = true,
+              },
+            },
+          },
+        },
         ["Generate a Commit Message for Staged"] = {
-          strategy = "chat",
+          strategy = "inline",
           description = "Generate a commit message for staged change",
           opts = {
+            mapping = "<leader>ax",
             index = 9,
             short_name = "staged-commit",
             auto_submit = true,
+            placement = "before|false",
           },
           prompts = {
             {
@@ -416,7 +409,7 @@ return {
     },
     keys = {
       { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
-      { "<leader>aa", "<cmd>CodeCompanionActions<cr>", mode = { "n", "v" }, desc = "Code Companion Actions" },
+      { "<leader>aa", "<cmd>CodeCompanionActions<cr>", mode = { "n", "v" }, desc = "Actions" },
       { "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", mode = { "n", "v" }, desc = "Toggle Chat" },
       { "<leader>as", "<cmd>CodeCompanionChat Add<cr>", mode = "v", desc = "Add to Chat" },
       {
@@ -424,35 +417,29 @@ return {
         "<cmd>CodeCompanionActions<cr>",
         desc = "Code Companion - Actions",
       },
-      {
-        "<leader>av",
-        "<cmd>CodeCompanionChat Toggle<cr>",
-        desc = "Code Companion - Toggle",
-        mode = { "n", "v" },
-      },
       -- Some common usages with visual mode
       {
         "<leader>ae",
         "<cmd>CodeCompanion /explain<cr>",
-        desc = "Code Companion - Explain code",
+        desc = "Explain code",
         mode = "v",
       },
       {
         "<leader>af",
         "<cmd>CodeCompanion /fix<cr>",
-        desc = "Code Companion - Fix code",
+        desc = "Fix code",
         mode = "v",
       },
       {
         "<leader>al",
         "<cmd>CodeCompanion /lsp<cr>",
-        desc = "Code Companion - Explain LSP diagnostic",
+        desc = "Explain LSP diagnostic",
         mode = { "n", "v" },
       },
       {
         "<leader>at",
         "<cmd>CodeCompanion /tests<cr>",
-        desc = "Code Companion - Generate unit test",
+        desc = "Generate unit test",
         mode = "v",
       },
       {
@@ -464,31 +451,31 @@ return {
       {
         "<leader>aM",
         "<cmd>CodeCompanion /staged-commit<cr>",
-        desc = "Code Companion - Git commit message (staged)",
+        desc = "Git commit message (staged)",
       },
       {
         "<leader>ad",
         "<cmd>CodeCompanion /inline-doc<cr>",
-        desc = "Code Companion - Inline document code",
+        desc = "Inline document code",
         mode = "v",
       },
-      { "<leader>aD", "<cmd>CodeCompanion /doc<cr>", desc = "Code Companion - Document code", mode = "v" },
+      { "<leader>aD", "<cmd>CodeCompanion /doc<cr>", desc = "Document code", mode = "v" },
       {
         "<leader>ar",
         "<cmd>CodeCompanion /refactor<cr>",
-        desc = "Code Companion - Refactor code",
+        desc = "Refactor code",
         mode = "v",
       },
       {
         "<leader>aR",
         "<cmd>CodeCompanion /review<cr>",
-        desc = "Code Companion - Review code",
+        desc = "Review code",
         mode = "v",
       },
       {
         "<leader>an",
         "<cmd>CodeCompanion /naming<cr>",
-        desc = "Code Companion - Better naming",
+        desc = "Better naming",
         mode = "v",
       },
       -- Quick chat
@@ -500,7 +487,7 @@ return {
             vim.cmd("CodeCompanion " .. input)
           end
         end,
-        desc = "Code Companion - Quick chat",
+        desc = "Quick chat",
       },
     },
   },

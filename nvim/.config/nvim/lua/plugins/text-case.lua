@@ -1,7 +1,9 @@
 return {
   "johmsalas/text-case.nvim",
   lazy = false,
-  config = true,
+  opts = {
+    prefix = "gC",
+  },
   cmd = {
     "Subs",
     "TextCaseStartReplacingCommand",
