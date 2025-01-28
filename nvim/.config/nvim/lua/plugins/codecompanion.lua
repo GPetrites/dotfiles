@@ -363,8 +363,7 @@ return {
       { "<leader>an", "<cmd>CodeCompanion /naming<cr>", desc = "Better naming", mode = "v" },
       { "<leader>ar", "<cmd>CodeCompanion /refactor<cr>", desc = "Refactor code", mode = "v" },
       { "<leader>aR", "<cmd>CodeCompanion /review<cr>", desc = "Review code", mode = "v" },
-      { "<leader>as", "<cmd>CodeCompanionChat Add<cr>", mode = "v", desc = "Send selection to Chat" },
-      { "<leader>aS", "<cmd>CodeCompanionSendBuffer<cr>", mode = { "n", "v" }, desc = "Send buffer to Chat" },
+      { "<leader>as", "<cmd>CodeCompanionChat Add<cr>", mode = "v", desc = "Send to Chat" },
       { "<leader>at", "<cmd>CodeCompanion /tests<cr>", desc = "Generate unit test", mode = "v" },
       {
         "<leader>aq",
