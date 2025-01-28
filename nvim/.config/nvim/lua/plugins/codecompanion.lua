@@ -109,47 +109,39 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     opts = {
-      --Refer to: https://github.com/olimorris/codecompanion.nvim/blob/main/lua/codecompanion/config.lua
+      opts = {
+        system_prompt = function()
+          return SYSTEM_PROMPT
+        end,
+        log_level = "DEBUG",
+      },
       strategies = {
         chat = {
           adapter = "copilot",
           roles = { llm = " Copilot" },
           slash_commands = {
             ["help"] = {
-              callback = "strategies.chat.slash_commands.help",
-              description = "Insert content from help tags",
               opts = {
-                contains_code = false,
-                max_lines = 128, -- Maximum amount of lines to of the help file to send (NOTE: Each vimdoc line is typically 10 tokens)
-                provider = "default", -- telescope|mini_pick|fzf_lua
+                provider = "fzf_lua",
               },
             },
           },
           keymaps = {
             send = {
               modes = {
-                n = "<CR>",
+                n = { "<CR>", "<C-CR>" },
                 i = "<C-CR>",
               },
-              index = 1,
-              callback = "keymaps.send",
-              description = "Send",
             },
             close = {
               modes = {
                 n = "q",
               },
-              index = 3,
-              callback = "keymaps.close",
-              description = "Close Chat",
             },
             stop = {
               modes = {
                 n = "<C-c>",
               },
-              index = 4,
-              callback = "keymaps.stop",
-              description = "Stop Request",
             },
           },
         },
@@ -158,30 +150,11 @@ return {
       display = {
         chat = {
           intro_message = " Welcome to Copilot! Press ? for options",
-          show_header_separator = false, -- Show header separators in the chat buffer? Set this to false if you're using an external markdown formatting plugin
-          separator = "─", -- The separator between the different messages in the chat buffer
-          show_references = true, -- Show references (from slash commands and variables) in the chat buffer?
-          show_settings = false, -- Show LLM settings at the top of the chat buffer?
-          show_token_count = true, -- Show the token count for each response?
           start_in_insert_mode = true, -- Open the chat buffer in insert mode?
         },
       },
-      opts = {
-        log_level = "DEBUG",
-      },
       prompt_library = {
         ["Explain"] = {
-          strategy = "chat",
-          description = "Explain how code in a buffer works",
-          opts = {
-            index = 4,
-            default_prompt = true,
-            modes = { "v" },
-            short_name = "explain",
-            auto_submit = true,
-            user_prompt = false,
-            stop_context_insertion = true,
-          },
           prompts = {
             {
               role = "system",
@@ -195,11 +168,16 @@ return {
               content = function(context)
                 local code = require("codecompanion.helpers.actions").get_code(context.start_line, context.end_line)
 
-                return "Please explain how the following code works:\n\n```"
-                  .. context.filetype
-                  .. "\n"
-                  .. code
-                  .. "\n```\n\n"
+                return string.format(
+                  [[Please explain the following code from buffer %d:
+```%s
+%s
+```
+]],
+                  context.bufnr,
+                  context.filetype,
+                  code
+                )
               end,
               opts = {
                 contains_code = true,
@@ -208,44 +186,9 @@ return {
           },
         },
         ["Generate a Commit Message"] = {
-          prompts = {
-            {
-              role = "user",
-              content = function()
-                return "Write commit message with commitizen convention. Write clear, informative commit messages that explain the 'what' and 'why' behind changes, not just the 'how'."
-                  .. "\n\n```\n"
-                  .. vim.fn.system("git diff")
-                  .. "\n```"
-              end,
-              opts = {
-                contains_code = true,
-              },
-            },
-          },
-        },
-        ["Generate a Commit Message for Staged"] = {
           strategy = "inline",
-          description = "Generate a commit message for staged change",
           opts = {
-            mapping = "<leader>ax",
-            index = 9,
-            short_name = "staged-commit",
-            auto_submit = true,
             placement = "before|false",
-          },
-          prompts = {
-            {
-              role = "user",
-              content = function()
-                return "Write commit message for the change with commitizen convention. Write clear, informative commit messages that explain the 'what' and 'why' behind changes, not just the 'how'."
-                  .. "\n\n```\n"
-                  .. vim.fn.system("git diff --staged")
-                  .. "\n```"
-              end,
-              opts = {
-                contains_code = true,
-              },
-            },
           },
         },
         ["Inline-Document"] = {
@@ -264,7 +207,7 @@ return {
               content = function(context)
                 local code = require("codecompanion.helpers.actions").get_code(context.start_line, context.end_line)
 
-                return "Please provide documentation in comment code for the following code and suggest to have better naming to improve readability.\n\n```"
+                return "Please provide documentation in comment code for the following code.\n\n```"
                   .. context.filetype
                   .. "\n"
                   .. code
@@ -292,7 +235,7 @@ return {
               content = function(context)
                 local code = require("codecompanion.helpers.actions").get_code(context.start_line, context.end_line)
 
-                return "Please brief how it works and provide documentation in comment code for the following code. Also suggest to have better naming to improve readability.\n\n```"
+                return "Please brief how it works and provide documentation in comment code for the following code.\n\n```"
                   .. context.filetype
                   .. "\n"
                   .. code
@@ -411,74 +354,18 @@ return {
       { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
       { "<leader>aa", "<cmd>CodeCompanionActions<cr>", mode = { "n", "v" }, desc = "Actions" },
       { "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", mode = { "n", "v" }, desc = "Toggle Chat" },
-      { "<leader>as", "<cmd>CodeCompanionChat Add<cr>", mode = "v", desc = "Add to Chat" },
-      {
-        "<leader>aa",
-        "<cmd>CodeCompanionActions<cr>",
-        desc = "Code Companion - Actions",
-      },
-      -- Some common usages with visual mode
-      {
-        "<leader>ae",
-        "<cmd>CodeCompanion /explain<cr>",
-        desc = "Explain code",
-        mode = "v",
-      },
-      {
-        "<leader>af",
-        "<cmd>CodeCompanion /fix<cr>",
-        desc = "Fix code",
-        mode = "v",
-      },
-      {
-        "<leader>al",
-        "<cmd>CodeCompanion /lsp<cr>",
-        desc = "Explain LSP diagnostic",
-        mode = { "n", "v" },
-      },
-      {
-        "<leader>at",
-        "<cmd>CodeCompanion /tests<cr>",
-        desc = "Generate unit test",
-        mode = "v",
-      },
-      {
-        "<leader>am",
-        "<cmd>CodeCompanion /commit<cr>",
-        desc = "Code Companion - Git commit message",
-      },
-      -- Custom prompts
-      {
-        "<leader>aM",
-        "<cmd>CodeCompanion /staged-commit<cr>",
-        desc = "Git commit message (staged)",
-      },
-      {
-        "<leader>ad",
-        "<cmd>CodeCompanion /inline-doc<cr>",
-        desc = "Inline document code",
-        mode = "v",
-      },
+      { "<leader>ad", "<cmd>CodeCompanion /inline-doc<cr>", desc = "Inline document code", mode = "v" },
       { "<leader>aD", "<cmd>CodeCompanion /doc<cr>", desc = "Document code", mode = "v" },
-      {
-        "<leader>ar",
-        "<cmd>CodeCompanion /refactor<cr>",
-        desc = "Refactor code",
-        mode = "v",
-      },
-      {
-        "<leader>aR",
-        "<cmd>CodeCompanion /review<cr>",
-        desc = "Review code",
-        mode = "v",
-      },
-      {
-        "<leader>an",
-        "<cmd>CodeCompanion /naming<cr>",
-        desc = "Better naming",
-        mode = "v",
-      },
-      -- Quick chat
+      { "<leader>ae", "<cmd>CodeCompanion /explain<cr>", desc = "Explain code", mode = "v" },
+      { "<leader>af", "<cmd>CodeCompanion /fix<cr>", desc = "Fix code", mode = "v" },
+      { "<leader>al", "<cmd>CodeCompanion /lsp<cr>", desc = "Explain LSP diagnostic", mode = { "n", "v" } },
+      { "<leader>am", "<cmd>CodeCompanion /commit<cr>", desc = "Git commit message" },
+      { "<leader>an", "<cmd>CodeCompanion /naming<cr>", desc = "Better naming", mode = "v" },
+      { "<leader>ar", "<cmd>CodeCompanion /refactor<cr>", desc = "Refactor code", mode = "v" },
+      { "<leader>aR", "<cmd>CodeCompanion /review<cr>", desc = "Review code", mode = "v" },
+      { "<leader>as", "<cmd>CodeCompanionChat Add<cr>", mode = "v", desc = "Send selection to Chat" },
+      { "<leader>aS", "<cmd>CodeCompanionSendBuffer<cr>", mode = { "n", "v" }, desc = "Send buffer to Chat" },
+      { "<leader>at", "<cmd>CodeCompanion /tests<cr>", desc = "Generate unit test", mode = "v" },
       {
         "<leader>aq",
         function()
