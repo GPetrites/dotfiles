@@ -2,26 +2,10 @@ return {
   {
     "mikavilpas/yazi.nvim",
     keys = {
-      -- 👇 in this section, choose your own keymappings!
-      {
-        "<leader>yy",
-        mode = { "n", "v" },
-        "<cmd>Yazi<cr>",
-        desc = "Open yazi at the current file",
-      },
-      {
-        -- Open in the current working directory
-        "<leader>yY",
-        "<cmd>Yazi cwd<cr>",
-        desc = "Open the file manager in nvim's working directory",
-      },
-      {
-        -- NOTE: this requires a version of yazi that includes
-        -- https://github.com/sxyazi/yazi/pull/1305 from 2024-07-18
-        "<leader>yr",
-        "<cmd>Yazi toggle<cr>",
-        desc = "Resume the last yazi session",
-      },
+      { "<leader>y", "", desc = "+Yazi", mode = { "n", "v" } },
+      { "<leader>yy", "<cmd>Yazi<cr>", mode = { "n", "v" }, desc = "Current file directory" },
+      { "<leader>yY", "<cmd>Yazi cwd<cr>", mode = { "n", "v" }, desc = "Current working directory" },
+      { "<leader>yr", "<cmd>Yazi toggle<cr>", mode = { "n", "v" }, desc = "Resume last session" },
     },
   },
 }

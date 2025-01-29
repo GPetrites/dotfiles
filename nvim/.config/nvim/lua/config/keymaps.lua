@@ -17,7 +17,7 @@ keymap.set("n", "<leader>bs", "<cmd>w<cr><esc>", { desc = "Save File" })
 
 keymap.set("n", "<leader>bq", function()
   Snacks.bufdelete()
-end, opts)
+end, { desc = "Close Buffer" })
 
 -- Navigate between splits
 if os.getenv("ZELLIJ_SESSION_NAME") == nil then
