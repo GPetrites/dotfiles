@@ -20,6 +20,28 @@ Install Reason  : Explicitly installed
 Install Script  : Yes
 Validated By    : None
 
+Name            : azure-cli
+Version         : 2.68.0-1
+Description     : Command-line tools for Microsoft Azure
+Architecture    : any
+URL             : https://github.com/Azure/azure-cli
+Licenses        : MIT
+Groups          : None
+Provides        : None
+Depends On      : python
+Optional Deps   : None
+Required By     : None
+Optional For    : None
+Conflicts With  : None
+Replaces        : None
+Installed Size  : 1144.34 MiB
+Packager        : Carl Smedstad <carsme@archlinux.org>
+Build Date      : Tue 14 Jan 2025 03:23:54 AM EST
+Install Date    : Wed 29 Jan 2025 11:59:36 PM EST
+Install Reason  : Explicitly installed
+Install Script  : No
+Validated By    : Signature
+
 Name            : baobab
 Version         : 47.0-1
 Description     : A graphical directory tree analyzer
@@ -86,6 +108,28 @@ Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
+Name            : bat
+Version         : 0.25.0-2
+Description     : Cat clone with syntax highlighting and git integration
+Architecture    : x86_64
+URL             : https://github.com/sharkdp/bat
+Licenses        : Apache-2.0 OR MIT
+Groups          : None
+Provides        : None
+Depends On      : gcc-libs  glibc  libgit2  oniguruma  zlib
+Optional Deps   : None
+Required By     : None
+Optional For    : paru
+Conflicts With  : None
+Replaces        : None
+Installed Size  : 5.25 MiB
+Packager        : Alexander F. Rødseth <xyproto@archlinux.org>
+Build Date      : Wed 08 Jan 2025 04:14:25 AM EST
+Install Date    : Sat 25 Jan 2025 10:35:25 AM EST
+Install Reason  : Explicitly installed
+Install Script  : No
+Validated By    : Signature
+
 Name            : brightnessctl
 Version         : 0.5.1-3
 Description     : Lightweight brightness control tool
@@ -129,6 +173,33 @@ Build Date      : Sun 01 Dec 2024 10:42:42 AM EST
 Install Date    : Fri 10 Jan 2025 12:39:57 PM EST
 Install Reason  : Explicitly installed
 Install Script  : Yes
+Validated By    : Signature
+
+Name            : chromium
+Version         : 132.0.6834.110-1
+Description     : A web browser built for speed, simplicity, and security
+Architecture    : x86_64
+URL             : https://www.chromium.org/Home
+Licenses        : BSD-3-Clause
+Groups          : None
+Provides        : None
+Depends On      : gtk3  nss  alsa-lib  xdg-utils  libxss  libcups  libgcrypt  ttf-liberation  systemd  dbus  libpulse  pciutils  libva  libffi  desktop-file-utils  hicolor-icon-theme  fontconfig  brotli  libjpeg-turbo  icu  flac  libxml2  libwebp  minizip  opus  harfbuzz  libxslt  libpng  freetype2
+Optional Deps   : pipewire: WebRTC desktop sharing under Wayland [installed]
+                  kdialog: support for native dialogs in Plasma
+                  gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland) [installed]
+                  org.freedesktop.secrets: password storage backend on GNOME / Xfce [installed]
+                  kwallet: support for storing passwords in KWallet on Plasma [installed]
+                  upower: Battery Status API support [installed]
+Required By     : None
+Optional For    : None
+Conflicts With  : None
+Replaces        : None
+Installed Size  : 308.18 MiB
+Packager        : Evangelos Foutras <foutrelis@archlinux.org>
+Build Date      : Wed 22 Jan 2025 07:11:28 PM EST
+Install Date    : Fri 24 Jan 2025 08:02:10 PM EST
+Install Reason  : Explicitly installed
+Install Script  : No
 Validated By    : Signature
 
 Name            : dkms
@@ -294,6 +365,32 @@ Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
+Name            : firefox
+Version         : 134.0.2-1
+Description     : Fast, Private & Safe Web Browser
+Architecture    : x86_64
+URL             : https://www.mozilla.org/firefox/
+Licenses        : MPL-2.0
+Groups          : None
+Provides        : None
+Depends On      : alsa-lib  at-spi2-core  bash  cairo  dbus  ffmpeg  fontconfig  freetype2  gcc-libs  gdk-pixbuf2  glib2  glibc  gtk3  hicolor-icon-theme  libpulse  libx11  libxcb  libxcomposite  libxdamage  libxext  libxfixes  libxrandr  libxss  libxt  mime-types  nspr  nss  pango  ttf-font
+Optional Deps   : hunspell-en_US: Spell checking, American English
+                  libnotify: Notification integration [installed]
+                  networkmanager: Location detection via available WiFi networks [installed]
+                  speech-dispatcher: Text-to-Speech [installed]
+                  xdg-desktop-portal: Screensharing with Wayland [installed]
+Required By     : None
+Optional For    : None
+Conflicts With  : None
+Replaces        : None
+Installed Size  : 247.68 MiB
+Packager        : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+Build Date      : Tue 21 Jan 2025 05:03:03 PM EST
+Install Date    : Fri 24 Jan 2025 08:00:14 PM EST
+Install Reason  : Explicitly installed
+Install Script  : No
+Validated By    : Signature
+
 Name            : fish
 Version         : 3.7.1-2
 Description     : Smart and user friendly shell intended mostly for interactive use
@@ -315,6 +412,29 @@ Build Date      : Sat 13 Apr 2024 07:56:43 PM EDT
 Install Date    : Fri 10 Jan 2025 01:04:59 PM EST
 Install Reason  : Explicitly installed
 Install Script  : Yes
+Validated By    : Signature
+
+Name            : font-manager
+Version         : 0.9.2-1
+Description     : A simple font management application for GTK+ Desktop Environments
+Architecture    : x86_64
+URL             : https://fontmanager.github.io
+Licenses        : GPL-3.0-only
+Groups          : None
+Provides        : None
+Depends On      : gtk4  json-glib  libsoup3  libxml2  sqlite  webkitgtk-6.0
+Optional Deps   : file-roller
+                  libnautilus-extension [installed]
+Required By     : None
+Optional For    : None
+Conflicts With  : None
+Replaces        : None
+Installed Size  : 11.27 MiB
+Packager        : Caleb Maclennan <alerque@archlinux.org>
+Build Date      : Sun 19 Jan 2025 03:56:13 AM EST
+Install Date    : Sat 25 Jan 2025 10:24:36 AM EST
+Install Reason  : Explicitly installed
+Install Script  : No
 Validated By    : Signature
 
 Name            : fzf
@@ -683,7 +803,7 @@ Provides        : org.freedesktop.secrets
 Depends On      : dconf  gcr  gcr-4  glib2  glibc  libgcrypt  pam  systemd-libs
 Optional Deps   : None
 Required By     : gnome-session
-Optional For    : git  libsecret  microsoft-edge-stable-bin
+Optional For    : chromium  git  libsecret  microsoft-edge-stable-bin
 Conflicts With  : None
 Replaces        : None
 Installed Size  : 3.31 MiB
@@ -1636,7 +1756,7 @@ Groups          : None
 Provides        : libpulse-mainloop-glib.so=0-64  libpulse-simple.so=0-64  libpulse.so=0-64
 Depends On      : bash  dbus  glib2  glibc  libasyncns  libsndfile  libxcb  systemd-libs
 Optional Deps   : pulse-native-provider: PulseAudio backend [installed]
-Required By     : ffmpeg  ffmpeg4.4  fluidsynth  freerdp  gnome-control-center  gnome-settings-daemon  gnome-shell  gst-plugins-good  gtk-vnc  libao  libcanberra  libopenmpt  phonon-qt6  pipewire-pulse  qt6-multimedia  speech-dispatcher  waybar
+Required By     : chromium  ffmpeg  ffmpeg4.4  firefox  fluidsynth  freerdp  gnome-control-center  gnome-settings-daemon  gnome-shell  gst-plugins-good  gtk-vnc  libao  libcanberra  libopenmpt  phonon-qt6  pipewire-pulse  qt6-multimedia  speech-dispatcher  waybar
 Optional For    : mpg123  sdl2  vlc
 Conflicts With  : None
 Replaces        : None
@@ -1991,7 +2111,7 @@ Optional Deps   : bluez: Bluetooth support [installed]
                   polkit: let non-root users control networking [installed]
                   ppp: dialup connection support
 Required By     : network-manager-applet
-Optional For    : gnome-control-center
+Optional For    : firefox  gnome-control-center
 Conflicts With  : None
 Replaces        : None
 Installed Size  : 15.14 MiB
@@ -2099,7 +2219,7 @@ Licenses        : GPL-3.0-or-later
 Groups          : None
 Provides        : None
 Depends On      : git  pacman  libalpm.so>=14
-Optional Deps   : bat: colored pkgbuild printing
+Optional Deps   : bat: colored pkgbuild printing [installed]
                   devtools: build in chroot and downloading pkgbuilds
 Required By     : None
 Optional For    : None
@@ -2161,7 +2281,7 @@ Optional Deps   : gst-plugin-pipewire: GStreamer plugin [installed]
                   realtime-privileges: realtime privileges with rt module
                   rtkit: realtime privileges with rtkit module [installed]
 Required By     : gnome-remote-desktop  gst-plugin-pipewire  mutter  pipewire-alsa  pipewire-audio  pipewire-jack  pipewire-pulse  wireplumber  xdg-desktop-portal  xdg-desktop-portal-hyprland
-Optional For    : microsoft-edge-stable-bin  sdl2
+Optional For    : chromium  microsoft-edge-stable-bin  sdl2
 Conflicts With  : None
 Replaces        : None
 Installed Size  : 2.74 MiB
@@ -2256,6 +2376,28 @@ Installed Size  : 236.67 KiB
 Packager        : Tomaz Canabrava <tcanabrava@archlinux.org>
 Build Date      : Thu 02 Jan 2025 04:20:01 AM EST
 Install Date    : Fri 10 Jan 2025 12:45:37 PM EST
+Install Reason  : Explicitly installed
+Install Script  : No
+Validated By    : Signature
+
+Name            : python-setuptools
+Version         : 1:75.2.0-4
+Description     : Easily download, build, install, upgrade, and uninstall Python packages
+Architecture    : any
+URL             : https://pypi.org/project/setuptools/
+Licenses        : MIT
+Groups          : python-build-backend
+Provides        : python-distribute
+Depends On      : python  python-jaraco.collections  python-jaraco.functools  python-jaraco.text  python-more-itertools  python-packaging  python-platformdirs  python-wheel
+Optional Deps   : None
+Required By     : None
+Optional For    : python  python-wheel
+Conflicts With  : None
+Replaces        : python-distribute
+Installed Size  : 8.05 MiB
+Packager        : Jelle van der Waa <jelle@archlinux.org>
+Build Date      : Sat 16 Nov 2024 09:23:48 AM EST
+Install Date    : Wed 29 Jan 2025 11:46:26 PM EST
 Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
@@ -2621,6 +2763,28 @@ Install Reason  : Explicitly installed
 Install Script  : No
 Validated By    : Signature
 
+Name            : ttf-jetbrains-mono-nerd
+Version         : 3.3.0-1
+Description     : Patched font JetBrains Mono from nerd fonts library
+Architecture    : any
+URL             : https://github.com/ryanoasis/nerd-fonts
+Licenses        : OFL-1.1-no-RFN
+Groups          : nerd-fonts
+Provides        : ttf-font-nerd
+Depends On      : None
+Optional Deps   : None
+Required By     : None
+Optional For    : starship
+Conflicts With  : nerd-fonts-jetbrains-mono
+Replaces        : nerd-fonts-jetbrains-mono
+Installed Size  : 219.78 MiB
+Packager        : T.J. Townsend <blakkheim@archlinux.org>
+Build Date      : Mon 18 Nov 2024 10:53:20 AM EST
+Install Date    : Sat 25 Jan 2025 10:18:10 AM EST
+Install Reason  : Explicitly installed
+Install Script  : No
+Validated By    : Signature
+
 Name            : uv
 Version         : 0.5.23-1
 Description     : An extremely fast Python package installer and resolver written in Rust
@@ -2883,7 +3047,7 @@ Optional Deps   : kde-cli-tools: for KDE Plasma5 support in xdg-open
                   perl-file-mimeinfo: for generic support in xdg-open
                   perl-net-dbus: Perl extension to dbus used in xdg-screensaver
                   perl-x11-protocol: Perl X11 protocol used in xdg-screensaver
-Required By     : 1password  flatpak  qt5-base  qt6-base
+Required By     : 1password  chromium  flatpak  qt5-base  qt6-base
 Optional For    : wl-clipboard
 Conflicts With  : None
 Replaces        : None
