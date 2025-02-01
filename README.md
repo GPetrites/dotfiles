@@ -23,30 +23,32 @@ pacman -S stow
 First, check out the dotfiles repo in your $HOME directory using git
 
 ```
-$ git clone git@github.com/dreamsofautonomy/dotfiles.git
-$ cd dotfiles
+git clone git@github.com/dreamsofautonomy/dotfiles.git
+cd dotfiles
 ```
 
 then use GNU stow to create symlinks
 
 ```
-$ stow -v */
+stow -v */
 ```
 
 ## Installed packages
 
+stow
+lazygit
+fish
+starship
 zellij
 fzf
+bat
+tldr
+
 kitty
-yay
+yay / paru
 uv
-stow
 ruff
-npm
+volta
+uv
 nushell
 neovim
-lazygit
-git
-fish
-nodejs
-starship
