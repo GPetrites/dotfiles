@@ -4,6 +4,8 @@ end
 
 set -x STARSHIP_CONFIG ~/.config/starship/starship.toml
 
+atuin init fish | source
+
 zoxide init fish | source
 alias cd="z"
 

@@ -34,9 +34,9 @@ return {
       {
         "<f10>",
         function()
-          require("dap").step_out()
+          require("dap").step_over()
         end,
-        desc = "Step Out",
+        desc = "Step Over",
       },
       {
         "<c-f10>",
