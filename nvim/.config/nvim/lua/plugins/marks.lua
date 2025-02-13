@@ -4,6 +4,7 @@ return {
     version = "*",
     opts = true,
     keys = {
+      { "<leader>m", "", desc = "+marks" },
       { "<leader>mm", ":RecallToggle<CR>", silent = true, desc = "Toggle Mark" },
       { "<leader>mn", ":RecallNext<CR>", silent = true, desc = "Next Mark" },
       { "<leader>mp", ":RecallPrevious<CR>", silent = true, desc = "Previous Mark" },
