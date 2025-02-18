@@ -37,6 +37,9 @@ else
   keymap.set("n", "<a-right>", ":ZellijNavigateRight<CR>", opts)
 end
 
-vim.defer_fn(function()
-  vim.opt.shellslash = false
-end, 5000)
+local is_windows = vim.loop.os_uname().version:match("Windows")
+if is_windows then
+  vim.defer_fn(function()
+    vim.opt.shellslash = false
+  end, 5000)
+end
