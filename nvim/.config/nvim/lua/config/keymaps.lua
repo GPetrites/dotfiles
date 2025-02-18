@@ -19,6 +19,11 @@ keymap.set("n", "<leader>bq", function()
   Snacks.bufdelete()
 end, { desc = "Close Buffer" })
 
+-- Tabs
+keymap.set("n", "[<tab>", ":tabprevious<CR>", { silent = true, desc = "Previous tab" })
+keymap.set("n", "]<tab>", ":tabnext<CR>", { silent = true, desc = "Next tab" })
+keymap.set("n", "<leader><tab>q", ":tabclose<CR>", { silent = true, desc = "Close tab" })
+
 -- Navigate between splits
 if os.getenv("ZELLIJ_SESSION_NAME") == nil then
   keymap.set("n", "<a-left>", ":wincmd h<CR>", opts)
@@ -31,3 +36,7 @@ else
   keymap.set("n", "<a-up>", ":ZellijNavigateUp<CR>", opts)
   keymap.set("n", "<a-right>", ":ZellijNavigateRight<CR>", opts)
 end
+
+vim.defer_fn(function()
+  vim.opt.shellslash = false
+end, 5000)

@@ -8,6 +8,8 @@ return {
       { "<leader>mm", ":RecallToggle<CR>", silent = true, desc = "Toggle Mark" },
       { "<leader>mn", ":RecallNext<CR>", silent = true, desc = "Next Mark" },
       { "<leader>mp", ":RecallPrevious<CR>", silent = true, desc = "Previous Mark" },
+      { "]m", ":RecallNext<CR>", silent = true, desc = "Next Mark" },
+      { "[m", ":RecallPrevious<CR>", silent = true, desc = "Previous Mark" },
       { "<leader>mc", ":RecallClear<CR>", silent = true, desc = "Clear All Marks" },
       {
         "<leader>ms",
