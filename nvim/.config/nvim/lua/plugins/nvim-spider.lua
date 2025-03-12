@@ -5,22 +5,22 @@ return {
   },
   keys = {
     {
-      "<m-w>",
+      "<a-w>",
       "<cmd>lua require('spider').motion('w')<CR>",
       mode = { "n", "o", "x" },
-      desc = "Move to start of next of word",
+      desc = "Next word (spider)",
     },
     {
-      "<m-e>",
+      "<a-e>",
       "<cmd>lua require('spider').motion('e')<CR>",
       mode = { "n", "o", "x" },
-      desc = "Move to end of word",
+      desc = "Prev word (spider)",
     },
     {
-      "<m-b>",
+      "<a-b>",
       "<cmd>lua require('spider').motion('b')<CR>",
       mode = { "n", "o", "x" },
-      desc = "Move to start of previous word",
+      desc = "Next end of word (spider)",
     },
   },
 }

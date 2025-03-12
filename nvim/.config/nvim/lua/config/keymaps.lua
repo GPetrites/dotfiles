@@ -20,9 +20,10 @@ keymap.set("n", "<leader>bq", function()
 end, { desc = "Close Buffer" })
 
 -- Tabs
-keymap.set("n", "[<tab>", ":tabprevious<CR>", { silent = true, desc = "Previous tab" })
-keymap.set("n", "]<tab>", ":tabnext<CR>", { silent = true, desc = "Next tab" })
-keymap.set("n", "<leader><tab>q", ":tabclose<CR>", { silent = true, desc = "Close tab" })
+keymap.set("n", "[<tab>", ":tabprevious<CR>", { silent = true, desc = "Previous Tab" })
+keymap.set("n", "]<tab>", ":tabnext<CR>", { silent = true, desc = "Next Tab" })
+keymap.set("n", "<leader><tab>q", ":tabclose<CR>", { silent = true, desc = "Close Tab" })
+keymap.set("n", "<leader><tab><tab>", ":tab split<CR>", { silent = true, desc = "New Tab" })
 
 -- Navigate between splits
 if os.getenv("ZELLIJ_SESSION_NAME") == nil then
